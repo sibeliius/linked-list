@@ -10,6 +10,7 @@ typedef struct node {
 
 //Function prototypes
 Node *create_node(int data);
+Node *insert(int index, int data, Node *head);
 Node *remove_last(Node *head);
 int size(Node *head);
 void free_list(Node *head);

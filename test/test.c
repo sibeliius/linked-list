@@ -3,8 +3,12 @@
 
 int main() {
     Node *head = create_node(3);
+
+    head = insert(0, 12, head);
+    printf("Inserted 12 at head.\n");
+
     //Warning: providing a head->next... position already containing a node will OVERWRITE it.
-    head->next = create_node(5);
+    head->next->next = create_node(5);
     head = append(18, head);
     
     printf("Initial linked list values: ");
@@ -19,6 +23,11 @@ int main() {
     head = remove_last(head);
     printf("\nThe new linked list with its final element removed is: ");
     print_list(head);
+
+    head = insert(2, 6, head);
+    printf("\nThe new linked list with 6 inserted at index 2 is: ");
+    print_list(head);
+    printf("\n");
 
     free_list(head);
     return 0;

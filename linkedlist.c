@@ -3,13 +3,44 @@
 #include "linkedlist.h"
 
 //Creates a new node AT the exact position with the provided data.
-//Returns a node pointer to link it to other nodes, but it will OVERWRITE any nodes at the position it'ss invoked.
+//Returns a node pointer to link it to other nodes, but it will OVERWRITE any nodes at the position it's invoked.
 Node *create_node(int data) {
     Node *new = malloc(sizeof(Node));
 
     new->data = data;
     new->next = NULL;
     return new;
+}
+
+//Inserts a new Node at a provided index, returns NULL if the index doesn't exist
+Node *insert(int index, int data, Node *head) {
+    Node *tmp = head;
+
+    //Case where an insertion is desired at the head node
+    if (index == 0) {
+        Node *new_head = create_node(data);
+        new_head->next = head;
+        //Updates head with our newly set head node
+        return new_head;
+    }
+
+    if (head == NULL) {
+        return NULL;
+    }
+
+    //Traversal to the index before the position to unlink
+    for (int i=0; i<index-1; i++) {
+        //If if we are at the end of the list before reaching the index, we return NULL
+        if (tmp->next == NULL) {
+            return NULL;
+        }
+        tmp = tmp->next;
+    }
+    //Saves the current index Node to relink to the new node, shifting it rightwards
+    Node *index_node = tmp->next;
+    tmp->next = create_node(data);
+    tmp->next->next = index_node;
+    return head;
 }
 
 //Removes the last node from the linked list
