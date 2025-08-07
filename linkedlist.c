@@ -43,6 +43,13 @@ Node *insert(int index, int data, Node *head) {
     return head;
 }
 
+//Removes all the nodes after the provided head from the linked list, setting the head node to NULL
+Node *clear(Node *head) {
+    free_list(head->next);
+    head = NULL; 
+    return head;
+}
+
 //Removes the last node from the linked list
 Node *remove_last(Node *head) {
     Node *tmp = head;
@@ -132,5 +139,21 @@ Node *append(int data, Node *head) {
 
     //Updates penultimate node with pointer to new node with data, returning the head node
     tmp->next = create_node(data);
+    return head;
+}
+
+//Appends a list of int values to the end of the linked list
+Node *add_all(int values[], size_t length, Node *head) {
+    for (size_t i=0; i<length; i++) {
+        append(values[i], head);
+    }
+    return head;
+}
+
+//Inserts a list of int values at a specific position. Basically an overriden variant of add_all().
+Node *insert_all(int idx, size_t length, int values[], Node *head) {
+    for (size_t i=0; i<length; i++) {
+        insert(idx+i, values[i], head);
+    }
     return head;
 }

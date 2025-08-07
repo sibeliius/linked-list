@@ -29,6 +29,25 @@ int main() {
     print_list(head);
     printf("\n");
 
+    head = clear(head);
+    printf("The list has now been cleared: ");
+    print_list(head);
+
+    if (head == NULL) {
+        printf("head is NULL\n");
+    }
+
+    int added_array[3] = {0};
+    head = insert(0, 5, head);
+    head = add_all(added_array, 3, head);
+    printf("Our array with three zeros appended from a list is now: ");
+    print_list(head);
+
+    head = append(3, head);
+    head = insert_all(4, 3, added_array, head);
+    printf("\nAfter appending a 3 and inserting our array again between it, the list is now: ");
+    print_list(head);
+
     free_list(head);
     return 0;
 }
