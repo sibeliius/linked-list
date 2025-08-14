@@ -48,6 +48,12 @@ int main() {
     printf("\nAfter appending a 3 and inserting our array again between it, the list is now: ");
     print_list(head);
 
+    printf("\nThe value at index 7 is: %d\n", get(7, head));
+
+    printf("However, the value at index 7 set to the value at 0 is: ");
+    set(7, get(0, head), head);
+    print_list(head);
+
     free_list(head);
     return 0;
 }

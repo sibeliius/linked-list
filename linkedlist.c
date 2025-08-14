@@ -157,3 +157,28 @@ Node *insert_all(int idx, size_t length, int values[], Node *head) {
     }
     return head;
 }
+
+//Returns data at the index within the linked list, -1 if OOB.
+int get(int idx, Node *head) {
+    //OOB check
+    if ((size(head)-1) < idx) return -1;
+    
+    for (int i=0; i<idx; i++) {
+        head = head->next;
+    }
+    return head->data;
+}
+
+//Sets data at a node with a value, returning its old value or -1 if OOB.
+int set(int idx, int new_value, Node *head) {
+    //OOB check
+    if ((size(head)-1) < idx) return -1;
+
+    for (int i=0; i<idx; i++) {
+        head = head->next;
+    }
+    
+    int old_value = head->data;
+    head->data = new_value;
+    return old_value;
+}

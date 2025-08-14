@@ -22,5 +22,7 @@ int get_index(int value, Node *head);
 Node *append(int data, Node *head);
 Node *add_all(int values[], size_t length, Node *head);
 Node *insert_all(int idx, size_t length, int values[], Node *head);
+int get(int idx, Node *head);
+int set(int idx, int new_value, Node *head);
 
 #endif
